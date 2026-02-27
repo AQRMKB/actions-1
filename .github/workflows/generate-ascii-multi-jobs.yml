@@ -10,6 +10,9 @@ jobs:
     build_job_1:
         runs-on: ubuntu-latest
         steps:
+        - name: Use Variables and Secrets
+          run: echo repo login --userName=${{ vars.REPO_USERNAME }} and --Password=${{ secrets.REPO_PASSWORD }}
+          
         - name: Install Cowsay program
           run: sudo apt-get install cowsay -y
 
