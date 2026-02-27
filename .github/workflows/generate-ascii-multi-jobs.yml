@@ -32,7 +32,7 @@ jobs:
             name: DRAGON_ARTIFACT_NAME
 
         - name: Test File Exists
-          run: grep -i "dragon" dragon.txt
+          run: grep -i "dragon" DRAGON_FILE_NAME
 
     deploy_job_3:
         needs: test_job_2
@@ -44,7 +44,7 @@ jobs:
             name: DRAGON_ARTIFACT_NAME
 
         - name: Read File
-          run: cat dragon.txt
+          run: cat DRAGON_FILE_NAME
 
         - name: Deploy
           run: echo "Deploying.... ..."
