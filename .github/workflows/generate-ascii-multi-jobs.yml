@@ -2,6 +2,10 @@ name: Generate ASCII Artwork Multiple Jobs
 
 on: push
 
+env:
+    DRAGON_ARTIFACT_NAME: dragon-text-file
+    DRAGON_FILE_NAME: dragon.txt
+
 jobs:
     build_job_1:
         runs-on: ubuntu-latest
@@ -10,13 +14,13 @@ jobs:
           run: sudo apt-get install cowsay -y
 
         - name: Execute Cowsay Cmd
-          run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> dragon.txt
+          run: cowsay -f dragon "Run for cover, I am a DRAGON....RAWR" >> DRAGON_FILE_NAME
 
         - name: Upload Dragon Text
           uses: actions/upload-artifact@v4
           with:
-            name: dragon-text-file
-            path: dragon.txt
+            name: DRAGON_ARTIFACT_NAME
+            path: DRAGON_FILE_NAME
 
     test_job_2:
         needs: build_job_1
@@ -25,7 +29,7 @@ jobs:
         - name: Download Dragon Text
           uses: actions/download-artifact@v5
           with:
-            name: dragon-text-file
+            name: DRAGON_ARTIFACT_NAME
 
         - name: Test File Exists
           run: grep -i "dragon" dragon.txt
@@ -37,7 +41,7 @@ jobs:
         - name: Download Dragon Text
           uses: actions/download-artifact@v5
           with:
-            name: dragon-text-file
+            name: DRAGON_ARTIFACT_NAME
 
         - name: Read File
           run: cat dragon.txt
