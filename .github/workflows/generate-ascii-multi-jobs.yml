@@ -3,8 +3,8 @@ name: Generate ASCII Artwork Multiple Jobs
 on: push
 
 env:
-    DRAGON_ARTIFACT_NAME: dragon-text-file
-    DRAGON_FILE_NAME: dragon.txt
+    DRAGON_ARTIFACT_NAME: "dragon-text-file"
+    DRAGON_FILE_NAME: "dragon.txt"
 
 jobs:
     build_job_1:
